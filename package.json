@@ -1,6 +1,6 @@
 {
   "name": "kev-stub",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Stub server for Kevin",
   "main": "index.js",
   "scripts": {
