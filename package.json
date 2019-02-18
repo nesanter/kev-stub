@@ -1,11 +1,9 @@
 {
   "name": "kev-stub",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Stub server for Kevin",
   "main": "index.js",
-  "scripts": {
-      "postinstall": "mkdir static"
-  },
+  "scripts": { },
   "author": "Noah Santer",
   "license": "MIT",
   "private": true,

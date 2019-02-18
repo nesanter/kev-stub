@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 const port = process.env.PORT || 8080;
-const staticDir = process.env.STATIC || 'static';
+const staticDir = process.env.STATIC || '..';
 
 const host = '127.0.0.1';
 
@@ -15,18 +15,25 @@ const options = {
 };
 
 // allow url encoded bodies
-app.use(express.urlencoded());
+app.use(express.urlencoded({'extended' : true}));
 // allow json encoded bodies
 app.use(express.json());
-
-// can add first argument (e.g. '/foo', express...) that will
-// be used as virtual path, e.g. /foo/bar will look for staticDir/bar
-app.use(express.static(staticDir, options));
 
 // "heartbeat" to check if server is running
 app.get('/ok', (req, res) => {
     res.send('ok');
 });
+
+// block access to /package
+app.all('/package/*', (req, res) => {
+    res.sendStatus(403);
+});
+
+// static needs to come last so above overrides!
+
+// can add first argument (e.g. '/foo', express...) that will
+// be used as virtual path, e.g. /foo/bar will look for staticDir/bar
+app.use(express.static(path.join(__dirname, staticDir), options));
 
 // spin up server
 var server = http.createServer(app);
