@@ -1,0 +1,15 @@
+{
+  "name": "kev-stub",
+  "version": "1.0.1",
+  "description": "Stub server for Kevin",
+  "main": "index.js",
+  "scripts": {
+      "postinstall": "mkdir static"
+  },
+  "author": "Noah Santer",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
